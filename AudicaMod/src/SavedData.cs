@@ -24,18 +24,18 @@ internal static class SettingsManager
 {
     public static HashSet<SavedData> settings;
     public static string settingsPath = Application.dataPath + "/../" + "/UserData/" + "SongSettings.json";
-    public static void ChangeInputOffset(string songID, int newOffset)
+    public static void ChangeInputOffset(string songID, int inputOffset)
     {
         var savedData = GetSavedData(songID);
         if (savedData.Equals(default(SavedData)))
         {
             var newEntry = new SavedData(songID);
-            newEntry.inputOffset = newOffset;
+            newEntry.inputOffset = inputOffset;
             settings.Add(newEntry);
         }
         else
         {
-            savedData.inputOffset = newOffset;
+            savedData.inputOffset = inputOffset;
         }
     }
 
