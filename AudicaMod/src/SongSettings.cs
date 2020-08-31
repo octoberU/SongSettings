@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using MelonLoader;
-using UnityEngine;
 
 namespace AudicaModding
 {
@@ -15,7 +12,15 @@ namespace AudicaModding
             public const string Version = "0.1.0"; // Version of the Mod.  (MUST BE SET)
             public const string DownloadLink = null; // Download Link for the Mod.  (Set as null if none)
         }
+        public override void OnApplicationStart()
+        {
+            SettingsManager.LoadSettings();
+        }
 
+        public override void OnApplicationQuit()
+        {
+            SettingsManager.SaveSettings();
+        }
     }
 }
 
