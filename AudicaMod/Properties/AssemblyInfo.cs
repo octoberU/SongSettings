@@ -4,20 +4,20 @@ using System.Runtime.InteropServices;
 using MelonLoader;
 using AudicaModding;
 
-[assembly: AssemblyTitle(AudicaMod.BuildInfo.Name)]
+[assembly: AssemblyTitle(SongSettings.BuildInfo.Name)]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany(AudicaMod.BuildInfo.Company)]
-[assembly: AssemblyProduct(AudicaMod.BuildInfo.Name)]
-[assembly: AssemblyCopyright("Created by " + AudicaMod.BuildInfo.Author)]
-[assembly: AssemblyTrademark(AudicaMod.BuildInfo.Company)]
+[assembly: AssemblyCompany(SongSettings.BuildInfo.Company)]
+[assembly: AssemblyProduct(SongSettings.BuildInfo.Name)]
+[assembly: AssemblyCopyright("Created by " + SongSettings.BuildInfo.Author)]
+[assembly: AssemblyTrademark(SongSettings.BuildInfo.Company)]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 //[assembly: Guid("")]
-[assembly: AssemblyVersion(AudicaMod.BuildInfo.Version)]
-[assembly: AssemblyFileVersion(AudicaMod.BuildInfo.Version)]
+[assembly: AssemblyVersion(SongSettings.BuildInfo.Version)]
+[assembly: AssemblyFileVersion(SongSettings.BuildInfo.Version)]
 [assembly: NeutralResourcesLanguage("en")]
-[assembly: MelonModInfo(typeof(AudicaMod), AudicaMod.BuildInfo.Name, AudicaMod.BuildInfo.Version, AudicaMod.BuildInfo.Author, AudicaMod.BuildInfo.DownloadLink)]
+[assembly: MelonModInfo(typeof(SongSettings), SongSettings.BuildInfo.Name, SongSettings.BuildInfo.Version, SongSettings.BuildInfo.Author, SongSettings.BuildInfo.DownloadLink)]
 
 
 // Create and Setup a MelonModGame to mark a Mod as Universal or Compatible with specific Games.
