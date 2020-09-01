@@ -189,6 +189,7 @@
     <Compile Include="src\SavedData.cs" />
     <Compile Include="src\SongSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\UI\ResetButton.cs" />
     <Compile Include="src\UI\SongSliders.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
