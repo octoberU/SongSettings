@@ -45,6 +45,7 @@ internal static class SettingsManager
         }
         else
         {
+            if ((savedData.inputOffset + inputOffset) > 50 || (savedData.inputOffset - inputOffset) < -50) return;
             savedData.inputOffset += inputOffset;
         }
         needSaving = true;
@@ -61,6 +62,7 @@ internal static class SettingsManager
         }
         else
         {
+            if ((savedData.targetSpeed + targetSpeed) > 2f || (savedData.targetSpeed - targetSpeed) < 0.5f) return;
             savedData.targetSpeed += targetSpeed;
         }
         needSaving = true;

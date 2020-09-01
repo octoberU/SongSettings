@@ -1,4 +1,5 @@
 using MelonLoader;
+using UnityEngine;
 
 namespace AudicaModding
 {
@@ -20,7 +21,9 @@ namespace AudicaModding
         public override void OnApplicationQuit()
         {
             SettingsManager.SaveSettings();
+            InGameHooks.RevertToOriginal();
         }
+
     }
 }
 

@@ -184,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\InGameHooks.cs" />
     <Compile Include="src\OriginalSettings.cs" />
     <Compile Include="src\SavedData.cs" />
     <Compile Include="src\SongSettings.cs" />
