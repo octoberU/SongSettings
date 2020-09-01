@@ -6,52 +6,67 @@ using System.IO;
 using MelonLoader.TinyJSON;
 
 [Serializable]
-class SavedData
+public class SavedData
 {
     public string songID;
     public int inputOffset;
     public float targetSpeed;
-
     public SavedData(string songID)
     {
         this.songID = songID;
         this.inputOffset = 0;
         this.targetSpeed = 1f;
     }
+
+    public SavedData(string songID, int inputOffset, float targetSpeed)
+    {
+        this.songID = songID;
+        this.inputOffset = inputOffset;
+        this.targetSpeed = targetSpeed;
+    }
+}
+
+[Serializable]
+public class LocalSettings
+{
+    public List<SavedData> settings;
 }
 
 internal static class SettingsManager
 {
-    public static HashSet<SavedData> settings;
+    public static List<SavedData> settings;
     public static string settingsPath = Application.dataPath + "/../" + "/UserData/" + "SongSettings.json";
+    public static bool needSaving = false;
     public static void ChangeInputOffset(string songID, int inputOffset)
     {
         var savedData = GetSavedData(songID);
-        if (savedData.Equals(default(SavedData)))
+        if (savedData == null)
         {
             var newEntry = new SavedData(songID);
-            newEntry.inputOffset = inputOffset;
+            newEntry.inputOffset += inputOffset;
             settings.Add(newEntry);
         }
         else
         {
-            savedData.inputOffset = inputOffset;
+            savedData.inputOffset += inputOffset;
         }
+        needSaving = true;
     }
 
     public static void ChangeTargetSpeed(string songID, float targetSpeed)
     {
         var savedData = GetSavedData(songID);
-        if (savedData.Equals(default(SavedData)))
+        if (savedData == null)
         {
             var newEntry = new SavedData(songID);
-            newEntry.targetSpeed = targetSpeed;
+            newEntry.targetSpeed += targetSpeed;
             settings.Add(newEntry);
         }
         else
         {
-            savedData.targetSpeed = targetSpeed;
+            savedData.targetSpeed += targetSpeed;
         }
+        needSaving = true;
     }
 
     public static void LoadSettings()
@@ -59,17 +74,19 @@ internal static class SettingsManager
         if (File.Exists(settingsPath))
         {
             string text = File.ReadAllText(settingsPath);
-            settings = JSON.Load(text).Make<HashSet<SavedData>>();
+            settings = JSON.Load(text).Make<LocalSettings>().settings;
         }
         else
         {
-            settings = new HashSet<SavedData>();
+            settings = new List<SavedData>();
         }
     }
 
     public static void SaveSettings()
     {
-        string text = JSON.Dump(settings);
+        var toSave = new LocalSettings();
+        toSave.settings = settings;
+        string text = JSON.Dump(toSave);
         File.WriteAllText(settingsPath, text);
     }
 
