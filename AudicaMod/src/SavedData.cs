@@ -45,8 +45,9 @@ internal static class SettingsManager
         }
         else
         {
-            if ((savedData.inputOffset + inputOffset) > 50 || (savedData.inputOffset - inputOffset) < -50) return;
             savedData.inputOffset += inputOffset;
+            if (savedData.inputOffset < -50) savedData.inputOffset = -50;
+            if (savedData.inputOffset > 50) savedData.inputOffset = 50;
         }
         needSaving = true;
     }
@@ -62,8 +63,9 @@ internal static class SettingsManager
         }
         else
         {
-            if ((savedData.targetSpeed + targetSpeed) > 2f || (savedData.targetSpeed - targetSpeed) < 0.5f) return;
             savedData.targetSpeed += targetSpeed;
+            if (savedData.targetSpeed < 0.5f) savedData.targetSpeed = 0.5f;
+            if (savedData.targetSpeed > 2f) savedData.targetSpeed = 2f;
         }
         needSaving = true;
     }
