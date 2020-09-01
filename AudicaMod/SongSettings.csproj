@@ -71,6 +71,9 @@
       <HintPath>lib\MelonLoader.ModHandler.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>E:\Steam\steamapps\common\Audica\MelonLoader\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Oculus.VR">
       <HintPath>lib\Oculus.VR.dll</HintPath>
       <Private>False</Private>

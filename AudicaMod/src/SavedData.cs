@@ -4,13 +4,15 @@ using System.Linq;
 using UnityEngine;
 using System.IO;
 using MelonLoader.TinyJSON;
+using Newtonsoft.Json;
 
 [Serializable]
-public class SavedData
+class SavedData
 {
     public string songID;
     public int inputOffset;
     public float targetSpeed;
+
     public SavedData(string songID)
     {
         this.songID = songID;
@@ -18,6 +20,7 @@ public class SavedData
         this.targetSpeed = 1f;
     }
 
+    [JsonConstructor]
     public SavedData(string songID, int inputOffset, float targetSpeed)
     {
         this.songID = songID;
@@ -26,11 +29,6 @@ public class SavedData
     }
 }
 
-[Serializable]
-public class LocalSettings
-{
-    public List<SavedData> settings;
-}
 
 internal static class SettingsManager
 {
@@ -74,7 +72,8 @@ internal static class SettingsManager
         if (File.Exists(settingsPath))
         {
             string text = File.ReadAllText(settingsPath);
-            settings = JSON.Load(text).Make<LocalSettings>().settings;
+            //settings = JSON.Load(text).Make<List<SavedData>>();
+            settings = JsonConvert.DeserializeObject<List<SavedData>>(text);
         }
         else
         {
@@ -84,9 +83,8 @@ internal static class SettingsManager
 
     public static void SaveSettings()
     {
-        var toSave = new LocalSettings();
-        toSave.settings = settings;
-        string text = JSON.Dump(toSave);
+        //string text = JSON.Dump(settings);
+        string text = JsonConvert.SerializeObject(settings);
         File.WriteAllText(settingsPath, text);
     }
 
