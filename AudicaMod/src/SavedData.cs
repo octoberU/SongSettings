@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using UnityEngine;
 using System.IO;
-using MelonLoader.TinyJSON;
 using Newtonsoft.Json;
 
 [Serializable]
@@ -72,7 +71,6 @@ internal static class SettingsManager
         if (File.Exists(settingsPath))
         {
             string text = File.ReadAllText(settingsPath);
-            //settings = JSON.Load(text).Make<List<SavedData>>();
             settings = JsonConvert.DeserializeObject<List<SavedData>>(text);
         }
         else
@@ -83,7 +81,6 @@ internal static class SettingsManager
 
     public static void SaveSettings()
     {
-        //string text = JSON.Dump(settings);
         string text = JsonConvert.SerializeObject(settings);
         File.WriteAllText(settingsPath, text);
     }
