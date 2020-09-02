@@ -1,6 +1,7 @@
 using MelonLoader;
 using UnityEngine;
 
+
 namespace AudicaModding
 {
     public class SongSettings : MelonMod

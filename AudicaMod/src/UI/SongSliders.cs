@@ -82,7 +82,7 @@ internal static class SongSliders
     {
         private static void Prefix(InGameUI __instance, InGameUI.State state, bool instant = false)
         {
-            if (state == InGameUI.State.PausePage) Show(__instance);
+            if (state == InGameUI.State.PausePage || state == InGameUI.State.EndGameContinuePage) Show(__instance);
             else Hide();
             if (SettingsManager.needSaving) SettingsManager.SaveSettings();
         }
